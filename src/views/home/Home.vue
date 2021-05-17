@@ -132,7 +132,6 @@ export default {
           break;
       }
       this.$refs.scroll.scrollTo(0,this.goods[this.currentType].saveY,0)
-      console.log(this.goods);
       this.$refs.tabControl1.currentIndex = index
       this.$refs.tabControl2.currentIndex = index
 

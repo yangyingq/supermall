@@ -10,7 +10,7 @@
             <span class="inner-title">{{item.innerTitle}}</span>
             <div class="inner-item-list">
               <div v-for="(innerItem,innerIndex) in item.innerVal" :key="innerIndex" class="innerItem" @click="showClothes(innerItem.id)">
-                <img :src="innerItem.img_url" alt="" width="60px" height="60px">
+                <img :src="innerItem.img_url" alt="" width="60px" height="60px" >
                 <span class="inner-item-title">{{innerItem.title}}</span>
               </div>
             </div>
@@ -32,7 +32,8 @@ export default {
         cateList:[],
         activeIndex: 0,
         innerList:[],
-        scroll:null
+        scroll:null,
+        rightLoading:true
       }
     },
     components:{
@@ -59,7 +60,6 @@ export default {
         await getCategory().then(res=>{
           this.cateList = res.data;
           this.innerList = this.cateList[0]['val'];
-          console.log(this.innerList)
         })
       },
     },

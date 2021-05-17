@@ -19,16 +19,18 @@ export  default {
       item.checked = !payload
     })
   },
-  //移除信息
+  //移除用户信息
   removeUserInfo(state,payload){
     state.accessToken = ""
     state.userInfo = {}
     state.cartList = []
+    localStorage.removeItem('userInfo')
   },
   //设置用户信息
   setUserInfo(state,payload){
     state.userInfo = payload.info
     state.accessToken = payload.token
     state.cartList = payload.cartList
+    localStorage.setItem('userInfo',JSON.stringify(payload))
   }
 }

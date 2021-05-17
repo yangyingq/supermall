@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive :exclude="[ 'Search','Detail','register','Profile']">
+    <keep-alive :include="[ 'Home','Category']">
       <router-view/>
     </keep-alive>
     <main-tab-bar v-if="show"></main-tab-bar>
@@ -40,6 +40,9 @@
     }
     .el-cascader-menu {
       min-width: 120px !important;
+    }
+    .el-loading-spinner {
+      top:40px !important;
     }
   }
 </style>

@@ -67,9 +67,7 @@ import empty from "../../../../fantastic-admin-master/src/layout/empty";
         this.$router.push('/profile/address')
       },
       logout(){
-        localStorage.removeItem('userInfo')
         this.$refs.confirm.show('退出登陆')
-        // this.$router.push('/login')
       },
       execute(){
         this.$refs.confirm.cancel()

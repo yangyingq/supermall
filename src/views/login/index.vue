@@ -6,7 +6,7 @@
     <div class="form">
       <div class="login-input">
         <input type="text" placeholder="手机号/邮箱/会员名" v-model="form.mobile">
-        <input type="password" placeholder="请输入登陆密码"  show-password v-model="form.password">
+        <input type="password" placeholder="请输入登陆密码"  show-password v-model="form.password" @keyup.enter = "login">
       </div>
       <div class="login-line">
         <span class="sms-login" @click="smsLogin">短信验证码登陆</span>
@@ -53,7 +53,6 @@ export default {
         console.log(res)
         if(res.data.code == 200){
           this.$toast.show(res.data.msg)
-          localStorage.setItem('userInfo',JSON.stringify(res.data.data))
           this.$store.commit('setUserInfo',res.data.data)
           setTimeout(()=>{
             this.$router.push('/profile')

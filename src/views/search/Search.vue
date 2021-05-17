@@ -14,7 +14,12 @@
             @scroll="contentScroll"
             @pullingUp="loadMore"
             >
-      <goods-list :goods="goodList"></goods-list>
+      <goods-list 
+        :goods="goodList" 
+        v-loading="goodLoad"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        ></goods-list>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
@@ -59,6 +64,7 @@ import {BackTopMixin} from "common/mixin";
           page:1,
           orderBy:"综合"
         },
+        goodLoad:true,
         isShowSelect:true,
         goodList:[],
         isTabFixed:false,
@@ -75,6 +81,10 @@ import {BackTopMixin} from "common/mixin";
     created() {
       this.form.id = this.$route.params.cate_id;
       this.fetchData();
+      this.$bus.$on('itemImageLoad',()=>{
+        this.goodLoad = false
+        console.log(this.goodLoad)
+    })
     },
     methods:{
       selectChange(index,selectIndex) {

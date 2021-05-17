@@ -31,6 +31,7 @@ export default {
   },
   methods:{
     imageLoad(){
+      //总线事件
       this.$bus.$emit('itemImageLoad')
     },
     detailClick(){
