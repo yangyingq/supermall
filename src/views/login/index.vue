@@ -4,7 +4,7 @@
       <img src="~assets/img/profile/logo.svg" alt="">
     </div>
     <div class="form">
-      <div class="login-input" v-model="form">
+      <div class="login-input">
         <input type="text" placeholder="手机号/邮箱/会员名" v-model="form.mobile">
         <input type="password" placeholder="请输入登陆密码"  show-password v-model="form.password">
       </div>
