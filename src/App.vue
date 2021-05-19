@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive :include="[ 'Home','Category']">
+    <keep-alive :exclude="[ 'Profile','Category','Cart','Search']">
       <router-view/>
     </keep-alive>
     <main-tab-bar v-if="show"></main-tab-bar>
@@ -18,15 +18,16 @@
         show:true
       }
     },
+  
     watch:{
       $route(e){
-        if(e.path.indexOf('search')=='-1'&&e.path.indexOf('advice') == '-1') {
+        if(e.path.indexOf('search')=='-1'&&e.path.indexOf('advice') == '-1' &&e.path.indexOf('login') == '-1') {
           this.show = true
         }else {
           this.show = false
         }
       }
-    }
+    },
   }
 </script>
 <style>

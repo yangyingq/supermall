@@ -20,8 +20,8 @@ FastClick.attach(document.body)
 
 //使用懒加载的插件
 Vue.use(VueLazyLoad,{
-  loading: import('./assets/img/common/placeholder.png'),
-  error:import('./assets/img/common/placeholder.png')
+  loading: require('./assets/img/common/placeholder.png'),
+  error:require('./assets/img/common/placeholder.png')
 })
 
 new Vue({

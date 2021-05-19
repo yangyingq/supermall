@@ -5,6 +5,9 @@ export  default  {
   cartList(state) {
     return state.cartList;
   },
+  userInfo(state) {
+    return state.userInfo;
+  },
   totalPrice(state) {
     return "￥" + state.cartList.filter(item => {
       return item.checked

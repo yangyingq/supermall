@@ -28,9 +28,6 @@
         length:'cartLength',
         list:'cartList'
       })
-    },
-    activated() {
-      console.log(this.list)
     }
   }
 </script>

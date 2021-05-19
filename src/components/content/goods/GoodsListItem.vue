@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="detailClick">
-    <img :src="getImages" alt="" width="100px" height="100px" @load="imageLoad" >
+    <img v-lazy = "getImages" alt="" width="100px" height="100px" @load="imageLoad" >
     <div class="goods-info">
       <p>{{goodsItem.desc}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -21,7 +21,6 @@ export default {
     }
   },
   computed:{
-
     getImages(){
       if( this.goodsItem.img_url != undefined ){
         let _u = this.goodsItem.img_url.substring( 7 );

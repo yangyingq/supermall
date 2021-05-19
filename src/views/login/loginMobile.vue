@@ -4,7 +4,7 @@
       <img src="~assets/img/profile/logo.svg" alt="">
     </div>
     <div class="form">
-      <div class="login-input" v-model="form">
+      <div class="login-input">
         <input type="text" placeholder="手机号" v-model="form.mobile">
       </div>
       <div class="verify">

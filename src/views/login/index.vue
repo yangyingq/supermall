@@ -29,7 +29,7 @@ export default {
       form:{
         mobile:'',
         password:''
-      }
+      },
     }
   },
   computed:{
@@ -50,7 +50,6 @@ export default {
         return false
       }
       loginPassword(this.form).then(res=>{
-        console.log(res)
         if(res.data.code == 200){
           this.$toast.show(res.data.msg)
           this.$store.commit('setUserInfo',res.data.data)

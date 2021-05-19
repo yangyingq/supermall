@@ -38,26 +38,23 @@
 <script>
 import Confirm from "components/common/confirm/Confirm";
 import NavBar from "components/common/navbar/NavBar";
-import empty from "../../../../fantastic-admin-master/src/layout/empty";
+import {mapGetters} from 'vuex';
   export default {
     name: "Profile",
     components:{
       NavBar,
       Confirm
     },
-    created() {
-      let str = localStorage.getItem('userInfo')
-      if(!str){
-        this.$router.push('/login')
-        return false
-      }
-      this.userInfo = JSON.parse(str)['info']
-    },
     data(){
       return {
         isShow:false,
-        userInfo:{}
+
       }
+    },
+    computed:{
+      ...mapGetters({
+        userInfo:'userInfo'
+      })
     },
     methods:{
       advice(){

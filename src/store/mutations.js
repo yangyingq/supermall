@@ -8,6 +8,8 @@ export  default {
   addToCart(state,payload){
     payload.checked = true
     state.cartList.push(payload)
+  },
+  updateCart(state,payload){
     let cartList = JSON.stringify(state.cartList)
     updateCart(cartList).then((res)=>{
       console.log(res)
@@ -24,13 +26,11 @@ export  default {
     state.accessToken = ""
     state.userInfo = {}
     state.cartList = []
-    localStorage.removeItem('userInfo')
   },
   //设置用户信息
   setUserInfo(state,payload){
     state.userInfo = payload.info
     state.accessToken = payload.token
     state.cartList = payload.cartList
-    localStorage.setItem('userInfo',JSON.stringify(payload))
   }
 }

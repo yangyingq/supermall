@@ -33,6 +33,7 @@ import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
 import BackTop from "components/content/backTop/BackTop";
 import { getCateGoodList } from "@/network/category";
+import { debounce } from "common/utils";
 import {BackTopMixin} from "common/mixin";
   export default {
     name: "Search",
@@ -77,14 +78,16 @@ import {BackTopMixin} from "common/mixin";
     },
     deactivated() {
       console.log('unactive')
+      this.$bus.$off('itemImageLoad','');
     },
     created() {
       this.form.id = this.$route.params.cate_id;
       this.fetchData();
-      this.$bus.$on('itemImageLoad',()=>{
-        this.goodLoad = false
-        console.log(this.goodLoad)
-    })
+      this.$bus.$on('itemImageLoad',
+        debounce(()=>{
+          this.goodLoad = false;
+        },50)
+    )
     },
     methods:{
       selectChange(index,selectIndex) {
