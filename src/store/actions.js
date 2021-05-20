@@ -1,3 +1,5 @@
+import { updateCart }  from '../network/cart'
+
 export  default {
   addCart(context,payload){
     return new Promise((resolve,reject)=>{
@@ -9,7 +11,15 @@ export  default {
       }else {
         payload.temp_count = 1;
         context.commit('addToCart',payload)
-        resolve('添加购物车成功！')
+        updateCart(JSON.stringify(context.state.cartList)).then(res=>{
+          if(res.data.code == 200){
+            resolve('添加购物车成功！') 
+          }else {
+            context.commit('moveFromCart',payload)
+            resolve('加入失败')
+          }
+        })
+        
       }
     })
   },

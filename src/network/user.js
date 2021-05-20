@@ -45,7 +45,7 @@ export function register(data){
 
 export function getUserInfo(){
   return request({
-    url: '/user/getUserInfo',
+    url: '/user/info',
     method:'get'
   })
 }

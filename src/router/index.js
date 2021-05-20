@@ -92,4 +92,21 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  console.log(to.path)
+  if (to.path!='/login' && to.path !='/loginMobile'&& to.path!='/register') {  // 判断该路由是否需要登录权限
+    if (localStorage.getItem('token')) {  // 通过vuex state获取当前的token是否存在            next();
+      next()
+    }
+    else {
+        next({
+            path: '/login',  // 去登录页面
+            query: {redirect: to.path}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+        })
+    }
+  }else {
+    next()
+  }
+})
+
 export default router

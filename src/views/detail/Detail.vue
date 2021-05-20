@@ -31,7 +31,7 @@
   import Scroll from "components/common/scroll/Scroll";
   // import Toast from "components/common/toast/Toast";
   import {getDetail,getDetailRecommend} from "network/detail";
-  import {debounce} from 'common/utils'
+  import {debounce} from 'common/utils';
   import DetailBottomBar from "views/detail/childComps/DetailBottomBar";
   import {BackTopMixin} from "common/mixin";
 

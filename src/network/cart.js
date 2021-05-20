@@ -10,5 +10,12 @@ export function updateCart(datas) {
   })
 }
 
+export function getCartList() {
+  return request({
+    url: '/cart/getCartList',
+    method: 'get',
+  })
+}
+
 
 

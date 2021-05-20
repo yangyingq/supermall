@@ -38,7 +38,8 @@
 <script>
 import Confirm from "components/common/confirm/Confirm";
 import NavBar from "components/common/navbar/NavBar";
-import {mapGetters} from 'vuex';
+import { getUserInfo } from "network/user";
+
   export default {
     name: "Profile",
     components:{
@@ -48,13 +49,8 @@ import {mapGetters} from 'vuex';
     data(){
       return {
         isShow:false,
-
+        userInfo:{}
       }
-    },
-    computed:{
-      ...mapGetters({
-        userInfo:'userInfo'
-      })
     },
     methods:{
       advice(){
@@ -71,7 +67,16 @@ import {mapGetters} from 'vuex';
         this.$store.commit('removeUserInfo')
         this.$router.push('/login')
       },
-
+      fetchData(){
+        getUserInfo().then((res)=>{
+          if(res.data.code == 200){
+            this.userInfo = res.data.data
+          }
+        })
+      }
+    },
+    created(){
+      this.fetchData();
     }
   }
 </script>

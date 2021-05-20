@@ -27,7 +27,7 @@ export function request(config){
       //3.某些网络请求，比如登陆是否携带token
       // config.headers['Token'] = '123';
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-      config.headers['accessToken'] = store.getters.getAccessToken
+      config.headers['accessToken'] = localStorage.getItem('token')
       return config
     },error => {
       // console.log(error);

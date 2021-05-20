@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive :exclude="[ 'Profile','Category','Cart','Search']">
+    <keep-alive :exclude="[ 'Category','Search','Detail']">
       <router-view/>
     </keep-alive>
     <main-tab-bar v-if="show"></main-tab-bar>
@@ -18,7 +18,6 @@
         show:true
       }
     },
-  
     watch:{
       $route(e){
         if(e.path.indexOf('search')=='-1'&&e.path.indexOf('advice') == '-1' &&e.path.indexOf('login') == '-1') {

@@ -12,7 +12,8 @@
   import NavBar from "components/common/navbar/NavBar";
   import CartList from "views/cart/childComps/CartList";
   import CartBottomBar from "views/cart/childComps/CartBottomBar";
-  import {mapGetters} from 'vuex';
+  import { getCartList } from "network/cart";
+  import { mapGetters } from 'vuex';
   export default {
     name: "Cart",
     components:{
@@ -28,6 +29,18 @@
         length:'cartLength',
         list:'cartList'
       })
+    },
+    methods:{
+      fetchData(){
+        getCartList().then(res => {
+          if(res.data.code == 200) {
+            this.$store.commit('setCart',res.data.data);
+          }
+        })
+      }
+    },
+    created(){
+      this.fetchData()
     }
   }
 </script>
@@ -37,7 +50,7 @@
     height: 100vh;
   }
   .nav-bar {
-    background-color:var(--color-tint) ;
+    background-color:var(--color-tint);
     height: 44px;
     color:#fff;
   }

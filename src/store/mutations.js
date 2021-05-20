@@ -1,4 +1,3 @@
-import { updateCart }  from '../network/cart'
 export  default {
   //添加商品数量
   addCounter(state,payload){
@@ -9,11 +8,9 @@ export  default {
     payload.checked = true
     state.cartList.push(payload)
   },
-  updateCart(state,payload){
-    let cartList = JSON.stringify(state.cartList)
-    updateCart(cartList).then((res)=>{
-      console.log(res)
-    })
+  //失败回滚购物车
+  moveFromCart(state,payload){
+    state.cartList.splice(state.cartList.findIndex(item => item.id === payload.id), 1)
   },
   //购物车选择所有
   selectAll(state,payload){
@@ -24,13 +21,20 @@ export  default {
   //移除用户信息
   removeUserInfo(state,payload){
     state.accessToken = ""
-    state.userInfo = {}
-    state.cartList = []
+    localStorage.removeItem('token')
   },
   //设置用户信息
   setUserInfo(state,payload){
-    state.userInfo = payload.info
     state.accessToken = payload.token
     state.cartList = payload.cartList
+    localStorage.setItem('token',payload.token)
+  },
+  //购物车信息
+  setCart(state,payload){
+    state.cartList = payload;
+  },
+  //清除购物车缓存
+  removeCart(state){
+    state.cartList = []
   }
 }
